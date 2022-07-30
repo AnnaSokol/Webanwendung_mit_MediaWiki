@@ -35,6 +35,7 @@ thumbs.db
 
 test/
 db/
+mediawiki/LocalSettings.php
 mediawiki/images/
 target/generated-sources/
 target/
