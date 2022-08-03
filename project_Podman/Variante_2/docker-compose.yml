@@ -1,0 +1,26 @@
+version: '3'
+services:
+    php-apache:
+        image: docker.io/library/php:8.0-apache
+        ports:
+            - 8080:80
+        volumes:
+            - apache:/var/www/html
+        links:
+            - 'mariadb'
+
+    mariadb:
+        image: docker.io/library/mariadb:10.6
+        volumes:
+            - mariadb:/var/lib/mysql
+        environment:
+            TZ: "Europe/Rome"
+            MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+            MYSQL_ROOT_PASSWORD: "rootpwd"
+            MYSQL_USER: 'testuser'
+            MYSQL_PASSWORD: 'testpassword'
+            MYSQL_DATABASE: 'testdb'
+
+volumes:
+    mariadb:
+    apache:
